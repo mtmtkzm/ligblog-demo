@@ -1,46 +1,37 @@
-Barba.Pjax.init();
-
-// これにより、リンククリックの時点ではなく、リンクにマウスオーバした時点でAjaxの処理が走る。
-// マウスオーバからクリックまでは一般的に200ms程度の遅延があるそうなので、200ms分、稼ぐことができる。
+Barba.Pjax.start();
 Barba.Prefetch.init();
 
-
-/*
-* サイドバーのステータス表示
-* */
 var sidebar = document.querySelector('.sidebar');
 var lastElement = sidebar.querySelector('.is-current');
+
 Barba.Dispatcher.on('linkClicked', function(el) {
   if (lastElement) {
     lastElement.classList.remove('is-current');
   }
+
   lastElement = el;
   lastElement.classList.add('is-current');
 });
 
-
-/*
-* ページ遷移アニメーション
-* */
-var leftDoor = document.querySelector('.door-left');
-var rightDoor = document.querySelector('.door-right');
+var shutterA = document.querySelector('.shutter-a');
+var shutterB = document.querySelector('.shutter-b');
 
 var ShutterAnimation = Barba.BaseTransition.extend({
 
   start: function() {
-    this.shutter()
+    this.shutter(400)
       .then(this.newContainerLoading)
       .then(this.finish.bind(this));
   },
 
-  shutter: function() {
-    return new Promise( function (resolve, reject) {
-      leftDoor.classList.toggle('moved');
-      rightDoor.classList.toggle('moved');
+  shutter: function(timer) {
+    return new Promise( function (resolve) {
+      shutterA.classList.toggle('moved');
+      shutterB.classList.toggle('moved');
 
       setTimeout(function () {
         resolve();
-      }, 500);
+      }, timer);
 
     });
   },

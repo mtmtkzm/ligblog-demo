@@ -24,7 +24,6 @@ a[disabled] {
 
 .header {
     padding: 75px calc( (100% - 750px) / 2 );
-
     background-color: #e0e0e0;
 }
 
@@ -49,7 +48,6 @@ a[disabled] {
 .content {
     width: 750px;
     padding-bottom: 75px;
-
     color: #3f3f3f;
     letter-spacing: .1em;
     line-height: 1.75;
@@ -58,7 +56,6 @@ a[disabled] {
 .content h2 {
     margin-top: 1.75em;
     padding-left: .75em;
-
     border-left: 1px solid #e0e0e0;
 }
 
@@ -71,29 +68,28 @@ a[disabled] {
     max-width: 100%;
 }
 
-.door {
+.shutter {
     position: fixed;
     top: 0;
     left: 0;
     width: 200vw;
     height: 100vh;
     background-color: #F0C010;
-
     z-index: 99;
     pointer-events: none;
-    transition: transform 1s ease-in-out;
+    transition: transform .8s ease-in-out;
 }
 
-.door-left {
+.shutter-a {
     transform: translateX(100vw);
 }
-.door-left.moved {
+.shutter-a.moved {
     transform: translateX(-200vw);
 }
 
-.door-right {
+.shutter-b {
     transform: translateX(-200vw);
 }
-.door-right.moved {
+.shutter-b.moved {
     transform: translateX(100vw);
 }
